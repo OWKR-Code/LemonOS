@@ -26,6 +26,15 @@
       "StorageReferanceID": 1,
       "dock": true,
       "desktop": false
+    },
+    {
+      "displayName": "Calculator",
+      "referanceName": "SYSTEM_CALCULATOR",
+      "path": "/src/Containers/app/Calculator/",
+      "development": true,
+      "StorageReferanceID": 1,
+      "dock": true,
+      "desktop": false
     }
   ]
 }
