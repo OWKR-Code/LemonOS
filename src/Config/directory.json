@@ -1,0 +1,9 @@
+{
+  "Directory": [
+    {
+      "DB_con": "/src/Config/db_con.php",
+      "user_config": "/src/Config/user_config.yaml",
+      "rc": "/src/Containers/app/referance.yml"
+    }
+  ]
+}

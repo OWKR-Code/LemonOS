@@ -1,0 +1,31 @@
+{
+  "Apps": [
+    {
+      "displayName": "Text editor",
+      "referanceName": "TEXTEDIT",
+      "development": true,
+      "StorageReferanceID": 0,
+      "dock": true,
+      "desktop": false,
+      "path": "/src/Containers/app/TextEditor/index.php"
+    },
+    {
+      "displayName": "Settings",
+      "referanceName": "SYSTEM_SETTINGS",
+      "path": "/src/Containers/app/Settings/settings.php",
+      "development": true,
+      "StorageReferanceID": 1,
+      "dock": true,
+      "desktop": false
+    },
+    {
+      "displayName": "Developer Hub",
+      "referanceName": "SYSTEM_DEVELOPER",
+      "path": "/src/Containers/app/Developer/",
+      "development": true,
+      "StorageReferanceID": 1,
+      "dock": true,
+      "desktop": false
+    }
+  ]
+}
