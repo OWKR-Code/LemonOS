@@ -21,7 +21,7 @@ if (!isset($_SESSION['logged_in'])) {
 
         body {
             height: 100vh;
-            background: url('https://images.unsplash.com/photo-1752352343628-5067de7bb84f?q=80&w=1770&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D') center/cover no-repeat fixed;
+            background: url('https://images.unsplash.com/photo-1750099255888-91d5386e833c?q=80&w=2370&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D') center/cover no-repeat fixed;
             overflow: hidden;
         }
 
@@ -95,11 +95,11 @@ if (!isset($_SESSION['logged_in'])) {
 
         .desktop-icon p {
             font-size: 12px;
-            text-shadow: 0 1px 3px rgba(0,0,0,0.6);
+            text-shadow: 0 1px 3px rgba(0, 0, 0, 0.6);
         }
 
         .dev-icon {
-            background: rgba(255,255,255,0.2);
+            background: rgba(255, 255, 255, 0.2);
             border-radius: 5px;
             padding: 10px;
             text-align: center;
@@ -114,22 +114,22 @@ if (!isset($_SESSION['logged_in'])) {
     </style>
 </head>
 <body>
-    <div class="menubar">
-       
-        <span>Beta 0.9.5</span>
-    </div>
+<div class="menubar">
 
-    <div class="desktop-icons">
-        <div class="desktop-icon">
-        
-        </div>
-    </div>
+    <span>Beta 0.9.5</span>
+</div>
 
-    <div class="dock">
-       
-    </div>
+<div class="desktop-icons">
+    <div class="desktop-icon">
 
-    <script>
+    </div>
+</div>
+
+<div class="dock">
+
+</div>
+
+<script>
     // Load app configuration
     const loadAppConfig = async () => {
         try {
@@ -137,7 +137,7 @@ if (!isset($_SESSION['logged_in'])) {
             return await response.json();
         } catch (error) {
             console.error('Error loading app config:', error);
-            return { Apps: [] };
+            return {Apps: []};
         }
     };
 
@@ -145,7 +145,7 @@ if (!isset($_SESSION['logged_in'])) {
     const createDockIcon = (app) => {
         const icon = document.createElement('div');
         icon.className = 'dock-icon';
-        
+
         if (app.development) {
             icon.innerHTML = `
                 <div class="dev-icon">${app.displayName}</div>
@@ -155,7 +155,7 @@ if (!isset($_SESSION['logged_in'])) {
                 <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI1MTIiIGhlaWdodD0iNTEyIiBmaWxsPSJ3aGl0ZSI+PHBhdGggZD0iTTQ0OCAzNjBWMjRIMTI4djMzNkgzMnY4MGg0NDh2LTgwem0tMzUyIDBoLTMydi0zMmgzMnptMzIwIDBoLTI4OHYtMzJoMjg4em0wLTY0aC0zMjBWNTZoMzIweiIvPjwvc3ZnPg==" alt="${app.displayName}">
             `;
         }
-        
+
         icon.onclick = () => launchApp(app);
         return icon;
     };
@@ -164,7 +164,7 @@ if (!isset($_SESSION['logged_in'])) {
     const createDesktopIcon = (app) => {
         const icon = document.createElement('div');
         icon.className = 'desktop-icon';
-        
+
         if (app.development) {
             icon.innerHTML = `
                 <div class="dev-icon">${app.displayName}</div>
@@ -176,7 +176,7 @@ if (!isset($_SESSION['logged_in'])) {
                 <p>${app.displayName}</p>
             `;
         }
-        
+
         icon.onclick = () => launchApp(app);
         return icon;
     };
@@ -207,9 +207,9 @@ if (!isset($_SESSION['logged_in'])) {
     const initializeApps = async () => {
         const dock = document.querySelector('.dock');
         const desktop = document.querySelector('.desktop-icons');
-        
+
         const config = await loadAppConfig();
-        
+
         config.Apps.forEach(app => {
             if (app.dock) {
                 dock.appendChild(createDockIcon(app));
@@ -222,6 +222,6 @@ if (!isset($_SESSION['logged_in'])) {
 
     // Initialize when DOM is ready
     document.addEventListener('DOMContentLoaded', initializeApps);
-    </script>
+</script>
 </body>
 </html>

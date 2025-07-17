@@ -12,15 +12,16 @@
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
             display: flex;
             justify-content: center;
-            align-items: center;
+            align-items: flex-start;
             height: 100vh;
+            padding-top: 40px;
         }
 
         .calculator {
             background: white;
             border-radius: 24px;
             box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
-            width: 320px;
+            width: 340px;
             padding: 24px;
         }
 
@@ -68,9 +69,43 @@
         .wide {
             grid-column: span 2;
         }
+
+        .history {
+            margin-top: 20px;
+            max-height: 150px;
+            overflow-y: auto;
+            background: #f0f0f5;
+            border-radius: 12px;
+            padding: 10px;
+            font-size: 1rem;
+        }
+
+        .history-entry {
+            padding: 6px 0;
+            border-bottom: 1px solid #ddd;
+        }
+
+        header {
+            display: flex;
+            flex-direction: row;
+            justify-content: flex-end;
+        }
+
+        .WindowControll_close {
+            background-color: red;
+            width: 1vw;
+            text-align: center;
+            margin: 10px;
+            text-decoration: none;
+        }
     </style>
 </head>
 <body>
+<header>
+    <a href="<?php echo "/LemonOS/public/home/index.php" ?>">
+        <p class="WindowControll_close">X</p>
+    </a>
+</header>
 <div class="calculator">
     <div id="display" class="display">0</div>
     <div class="buttons">
@@ -97,10 +132,12 @@
         <button class="wide" onclick="input('0')">0</button>
         <button onclick="input('.')">.</button>
     </div>
+    <div id="history" class="history"></div>
 </div>
 
 <script>
-    let display = document.getElementById('display');
+    const display = document.getElementById('display');
+    const history = document.getElementById('history');
 
     function input(value) {
         if (display.innerText === "0") {
@@ -116,7 +153,12 @@
 
     function calculate() {
         try {
-            display.innerText = eval(display.innerText.replace(/÷/g, '/').replace(/×/g, '*'));
+            const result = eval(display.innerText);
+            const entry = document.createElement('div');
+            entry.classList.add('history-entry');
+            entry.innerText = display.innerText + ' = ' + result;
+            history.prepend(entry);
+            display.innerText = result;
         } catch (e) {
             display.innerText = "Error";
         }

@@ -15,7 +15,7 @@
       "path": "/src/Containers/app/Settings/settings.php",
       "development": true,
       "StorageReferanceID": 1,
-      "dock": true,
+      "dock": false,
       "desktop": false
     },
     {
