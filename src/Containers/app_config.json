@@ -15,13 +15,22 @@
       "path": "/src/Containers/app/Settings/settings.php",
       "development": true,
       "StorageReferanceID": 1,
-      "dock": true,
+      "dock": false,
       "desktop": false
     },
     {
       "displayName": "Developer Hub",
       "referanceName": "SYSTEM_DEVELOPER",
       "path": "/src/Containers/app/Developer/",
+      "development": true,
+      "StorageReferanceID": 1,
+      "dock": true,
+      "desktop": false
+    },
+    {
+      "displayName": "Calculator",
+      "referanceName": "SYSTEM_CALCULATOR",
+      "path": "/src/Containers/app/Calculator/",
       "development": true,
       "StorageReferanceID": 1,
       "dock": true,

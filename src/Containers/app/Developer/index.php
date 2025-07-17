@@ -1,10 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
+  <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Lemon Developer</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
   <style>
+    :root {
+      --yellow: #ffe94d;
+      --bg: #f4f4f6;
+      --white: #ffffff;
+      --gray: #666;
+      --radius: 12px;
+    }
+
     * {
       box-sizing: border-box;
       margin: 0;
@@ -12,40 +21,42 @@
     }
 
     body {
-      font-family: 'Segoe UI', Inter, sans-serif;
+      font-family: 'Inter', sans-serif;
+      background-color: var(--bg);
+      color: #111;
       display: flex;
       height: 100vh;
-      color: #111;
-      background-color: #f2f3f5;
+      overflow: hidden;
     }
 
     .sidebar {
-      width: 240px;
-      background-color: #ffffff;
+      width: 220px;
+      background-color: var(--white);
       border-right: 1px solid #ddd;
-      padding: 1rem;
+      padding: 1.5rem 1rem;
       display: flex;
       flex-direction: column;
     }
 
     .sidebar h2 {
-      font-size: 1.4rem;
+      font-size: 1.3rem;
       margin-bottom: 2rem;
     }
 
     .nav-link {
-      padding: 0.7rem 1rem;
+      padding: 0.6rem 1rem;
+      border-radius: var(--radius);
       margin-bottom: 0.5rem;
-      border-radius: 8px;
-      color: #333;
       text-decoration: none;
+      color: #333;
       font-weight: 500;
-      transition: background 0.2s;
+      cursor: pointer;
+      transition: 0.2s background;
     }
 
     .nav-link:hover,
     .nav-link.active {
-      background-color: #ffe94d;
+      background-color: var(--yellow);
       color: #000;
     }
 
@@ -53,27 +64,31 @@
       flex: 1;
       padding: 2rem;
       overflow-y: auto;
-      display: flex;
-      flex-direction: column;
+      transition: all 0.2s;
     }
 
     .main h1 {
-      font-size: 2rem;
+      font-size: 1.8rem;
       margin-bottom: 1rem;
+    }
+
+    .main p {
+      color: var(--gray);
+      margin-bottom: 2rem;
     }
 
     .card-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
       gap: 1.5rem;
     }
 
     .card {
-      background-color: white;
-      border-radius: 12px;
-      padding: 1.5rem;
-      box-shadow: 0 6px 12px rgba(0,0,0,0.05);
-      transition: transform 0.2s;
+      background-color: var(--white);
+      border-radius: var(--radius);
+      padding: 1.2rem;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+      transition: 0.2s transform;
     }
 
     .card:hover {
@@ -81,59 +96,95 @@
     }
 
     .card h3 {
+      font-size: 1rem;
       margin-bottom: 0.5rem;
-      font-size: 1.1rem;
     }
 
     .card p {
       font-size: 0.9rem;
-      color: #555;
+      color: var(--gray);
+    }
+
+    .tab {
+      display: none;
+    }
+
+    .tab.active {
+      display: block;
     }
   </style>
 </head>
 <body>
 
-  <div class="sidebar">
-    <h2>Developer</h2>
-    <a class="nav-link active" href="#">Dashboard</a>
-    <a class="nav-link" href="#">Get Started</a>
-    <a class="nav-link" href="#">LemonKit SDK</a>
-    <a class="nav-link" href="#">Documentation</a>
-    <a class="nav-link" href="#">Your Apps</a>
-    <a class="nav-link" href="#">Feedback</a>
-  </div>
+<div class="sidebar">
+  <h2>Developer</h2>
+  <div class="nav-link active" data-tab="dashboard">Dashboard</div>
+  <div class="nav-link" data-tab="get-started">Get Started</div>
 
-  <div class="main">
-    <h1>Welcome to LemonOS Web Developer</h1>
-    <p style="margin-bottom: 2rem; color: #666;">Learn to code for LemonOS Web and manage all your tools, SDKs, and apps right from here.</p>
+  <div class="nav-link" data-tab="docs">Documentation</div>
+  <div class="nav-link" data-tab="apps">Your Apps</div>
+
+</div>
+
+<div class="main">
+  <div class="tab active" id="dashboard">
+    <h1>Welcome to LemonOS Developer</h1>
+    <p>Learn to code for LemonOS Web and manage all your tools and apps in one place.</p>
 
     <div class="card-grid">
       <div class="card">
-        <h3>📦 Install SDK</h3>
-        <p>Set up the LemonKit SDK and start building your first native LemonOS app.</p>
+        <h3>Wellcome to LemonOS</h3>
+        <p>Here we will keep you updated in regards to software issues and updates. This is the platform with which
+          later on you will be able to publish your own apps!</p>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="tab" id="get-started">
+    <h1>Get Started</h1>
+    <p>Begin your journey with setup guides, dev environments and tutorials.</p>
+    <div class="card-grid">
+      <div class="card">
+        <h3>📁 Setup Workspace</h3>
+        <p>Prepare your dev environment inside LemonOS Web.</p>
       </div>
       <div class="card">
-        <h3>🧠 Learn LemonScript</h3>
-        <p>Use our beginner-friendly language based on JavaScript and build web-native desktop apps.</p>
-      </div>
-      <div class="card">
-        <h3>📄 Documentation</h3>
-        <p>Read about system APIs, window management, filesystem integration, and more.</p>
-      </div>
-      <div class="card">
-        <h3>🚀 Build & Test</h3>
-        <p>Use the in-browser terminal to compile, preview, and debug your applications.</p>
-      </div>
-      <div class="card">
-        <h3>📁 App Manager</h3>
-        <p>Manage all your uploaded, deployed, or test apps in one place.</p>
-      </div>
-      <div class="card">
-        <h3>💬 Community</h3>
-        <p>Connect with other developers, submit bugs, and share ideas to improve LemonOS Web.</p>
+        <h3>🧪 Try Sample Apps</h3>
+        <p>Run and explore sample projects to learn the structure.</p>
       </div>
     </div>
   </div>
+
+
+  <div class="tab" id="docs">
+    <h1>Documentation</h1>
+    <p>Deep dive into the developer docs and build the future of LemonOS.</p>
+  </div>
+
+  <div class="tab" id="apps">
+    <h1>Your Apps</h1>
+    <p>Self signing and publishing is not available with this build. Thank you for your patience</p>
+  </div>
+
+
+  <script>
+    const links = document.querySelectorAll('.nav-link');
+    const tabs = document.querySelectorAll('.tab');
+
+    links.forEach(link => {
+      link.addEventListener('click', () => {
+        // Update active tab in sidebar
+        links.forEach(l => l.classList.remove('active'));
+        link.classList.add('active');
+
+        // Show correct tab content
+        tabs.forEach(tab => tab.classList.remove('active'));
+        const tabId = link.getAttribute('data-tab');
+        document.getElementById(tabId).classList.add('active');
+      });
+    });
+  </script>
 
 </body>
 </html>
