@@ -11,6 +11,28 @@ if (!isset($_SESSION['logged_in'])) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>macOS Desktop</title>
+    <script>
+        function updateTime() {
+            const now = new Date();
+            const timeDiv = document.getElementById('clock');
+            const dateDiv = document.getElementById('date');
+
+            timeDiv.textContent = now.toLocaleTimeString('en-US', {
+                hour: '2-digit',
+                minute: '2-digit',
+                hour12: true
+            });
+
+            dateDiv.textContent = now.toLocaleDateString('en-US', {
+                weekday: 'long',
+                month: 'long',
+                day: 'numeric'
+            });
+        }
+
+        updateTime();
+        setInterval(updateTime, 1000);
+    </script>
     <style>
         * {
             margin: 0;
@@ -111,12 +133,24 @@ if (!isset($_SESSION['logged_in'])) {
             justify-content: center;
             color: white;
         }
+
+        #clock, #date {
+            font-size: 12px;
+            color: black;
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+        }
+
+
     </style>
 </head>
 <body>
 <div class="menubar">
 
-    <span>Beta 0.9.5</span>
+
+    <div style="margin-left: auto; display: flex; gap: 10px; align-items: center;">
+        <span id="date"></span>
+        <span id="clock"></span>
+    </div>
 </div>
 
 <div class="desktop-icons">
@@ -130,6 +164,34 @@ if (!isset($_SESSION['logged_in'])) {
 </div>
 
 <script>
+
+    function updateTime() {
+        const now = new Date();
+        const timeDiv = document.getElementById('clock');
+        const dateDiv = document.getElementById('date');
+
+        if (!timeDiv || !dateDiv) return;
+
+        timeDiv.textContent = now.toLocaleTimeString('en-US', {
+            hour: '2-digit',
+            minute: '2-digit',
+            hour12: true
+        });
+
+        dateDiv.textContent = now.toLocaleDateString('en-US', {
+            weekday: 'long',
+            month: 'long',
+            day: 'numeric'
+        });
+    }
+
+    // Start clock once DOM is loaded
+    document.addEventListener('DOMContentLoaded', () => {
+        updateTime();
+        setInterval(updateTime, 1000);
+    });
+
+
     // Load app configuration
     const loadAppConfig = async () => {
         try {
